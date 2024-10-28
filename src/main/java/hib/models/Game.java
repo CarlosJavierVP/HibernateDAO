@@ -13,18 +13,17 @@ public class Game implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
-
     private String title;
-
     private String platform;
-
     private Integer year;
-
     private String description;
+    @Column(name="image_url")
+    private String imageUrl;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name="user_id")
     private User user;
+
 
     @Override
     public boolean equals(Object o) {
@@ -46,8 +45,6 @@ public class Game implements Serializable {
                 ", title='" + title + '\'' +
                 ", platform='" + platform + '\'' +
                 ", year=" + year +
-                ", description='" + description + '\'' +
-                ", user=" + user.getEmail() +
-                '}';
+                ", description='" + description + '\'' +'}';
     }
 }

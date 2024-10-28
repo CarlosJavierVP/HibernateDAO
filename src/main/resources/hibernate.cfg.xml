@@ -19,8 +19,8 @@ https://github.com/hibernate/dtd/blob/main/hibernate-configuration-3.0.dtd
         <property name="show_sql">true</property>
 
 
-        <!--mapping class="hib.model.Game"/-->
-        <!--mapping class="hib.model.User"/-->
+        <mapping class="hib.models.Game"/>
+        <mapping class="hib.models.User"/>
 
     </session-factory>
 </hibernate-configuration>

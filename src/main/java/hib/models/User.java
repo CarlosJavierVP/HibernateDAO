@@ -3,6 +3,7 @@ package hib.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -10,23 +11,24 @@ import java.util.Objects;
 @Data
 @Entity
 @Table(name = "user", schema = "ad")
-public class User {
+public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
     private Long id;
-    @Basic
-    @Column(name = "email")
     private String email;
-    @Basic
-    @Column(name = "password")
     private String password;
-    @Basic
     @Column(name = "is_admin")
     private Boolean isAdmin;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    private List<Game> games = new ArrayList<>();
+    @OneToMany(mappedBy = "user")
+    private List <Game> games = new ArrayList<>(0);
+
+    //queremos que la clase sea consistente
+    public void addGame(Game g){
+        g.setUser(this);
+        games.add(g);
+    }
+
 
     @Override
     public boolean equals(Object o) {
