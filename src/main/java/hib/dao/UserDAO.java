@@ -46,6 +46,14 @@ public class UserDAO implements DAO<User>{
             q.setParameter("email", email);
             q.setParameter("password", password);
 
+            //Si no usas el Eager, a todos los efectos es como hacerlo con un eager
+            /*
+            Porque el Lazy no carga los datos hasta que sean necesarios, de ahí usar getGames(), para requerir los datos.
+            User user = q.uniqueResult();
+            User user 1 = session.get(User.Class, user.getId());
+            user1.getGames();
+             */
+
             // q.uniqueResult();
             return q.getSingleResultOrNull(); //devuelve un usuario y si no hay usuario devuelve null
             /*

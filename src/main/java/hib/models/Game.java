@@ -20,6 +20,7 @@ public class Game implements Serializable {
     @Column(name="image_url")
     private String imageUrl;
 
+    //por defecto es eager
     @ManyToOne
     @JoinColumn(name="user_id")
     private User user;
@@ -45,6 +46,9 @@ public class Game implements Serializable {
                 ", title='" + title + '\'' +
                 ", platform='" + platform + '\'' +
                 ", year=" + year +
-                ", description='" + description + '\'' +'}';
+                ", description='" + description + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", user=" + user.getEmail() +
+                '}';
     }
 }

@@ -38,7 +38,7 @@ public class Main {
         //System.out.println(userDao.valideUser("correo@correo.com","123"));
         //System.out.println(userDao.valideUser("jaja@jaja.com","12"));
 
-        System.out.println(user.getEmail());
+        System.out.println(user);
 
 
 

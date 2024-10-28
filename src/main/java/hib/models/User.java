@@ -20,7 +20,8 @@ public class User implements Serializable {
     @Column(name = "is_admin")
     private Boolean isAdmin;
 
-    @OneToMany(mappedBy = "user")
+    //por defecto es lazy
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List <Game> games = new ArrayList<>(0);
 
     //queremos que la clase sea consistente
