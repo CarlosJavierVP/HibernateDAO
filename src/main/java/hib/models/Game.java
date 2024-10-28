@@ -2,6 +2,7 @@ package hib.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.Formula;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -20,11 +21,19 @@ public class Game implements Serializable {
     @Column(name="image_url")
     private String imageUrl;
 
+    @Transient //cuando voy a leerlo, no lo leo ni lo escribo en la base de datos
+    private Integer age;
+    @Formula("2025 - year")//directamente aplica la fórmula - por ejemplo para encadenar el nombre completo
+    private Integer n;
+
     //por defecto es eager
     @ManyToOne
     @JoinColumn(name="user_id")
     private User user;
 
+    public Integer getAge(){
+        return 2024-year;
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -21,7 +21,11 @@ public class User implements Serializable {
     private Boolean isAdmin;
 
     //por defecto es lazy
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(
+            mappedBy = "user",
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.PERSIST //-Por defecto no hay cascade (PRECAUCIÓN) Cascade es el parámetro que indica como va a funcionar la relación frente a operaciones de escritura - REMOVE si elimino un usuario, elimino todos sus juegos
+    )
     private List <Game> games = new ArrayList<>(0);
 
     //queremos que la clase sea consistente
